@@ -11,16 +11,27 @@ import com.dg.assignment.Finder;
 public class TestCases {
 
 	@Test
-	public void test() {
+	public void test1() {
 		String seq = "OOAO";
-		Finder finder = new Finder(seq);
+		basicTest(seq);
+	}
+	
+	@Test
+	public void test2() {
+		String seq = "OOOAOAOAOOOAOAOOOOA";
+		basicTest(seq);
+	}
+	
+	private void basicTest(String sequence){
+		Finder finder = new Finder(sequence);
 		List<String> outputs = finder.getOutputs();
 		for (String output: outputs){
 			StringBuilder expected = new StringBuilder();
 			for(char c: output.toCharArray()){
+				if(c == '#') continue; //As first character is always # from the root Node.
 				expected.append(Alphabets.M_CODE.get(c));
 			}
-			Assert.assertEquals(expected, "#" + seq);
+			Assert.assertEquals(expected.toString(),sequence);
 		}
 	}
 
