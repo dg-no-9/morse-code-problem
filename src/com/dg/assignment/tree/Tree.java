@@ -19,26 +19,29 @@ public class Tree<T> {
 		return root;
 	}
 
+	int count = 0;
 	public void setRoot(Node<T> root) {
 		this.root = root;
 	}
-	
-	public List<List<Node<T>>> traverse () {
+
+	public List<List<Node<T>>> traverse() {
 		// assume root != NULL
-		List<List<Node<T>>> paths = new LinkedList<List<Node<T>>>(); 
-		traverse (root, new LinkedList<Node<T>>(), paths);
+		List<List<Node<T>>> paths = new LinkedList<List<Node<T>>>();
+		traverse(root, new LinkedList<Node<T>>(), paths);
+		System.out.println("Tree Showing:" + count);
 		return paths;
 	}
 
-	private void traverse (Node<T> root, LinkedList<Node<T>> path, List<List<Node<T>>> paths) {
-		  path.add(root);
-		  if (root.isLeaf()) {
-		   paths.add(path);
-		  }
-		  else {
-		    for(Node<T> node : root.getChildren()) {
-		      traverse (node, new LinkedList<Node<T>>(path), paths);
-		    }
-		  }
+	private void traverse(Node<T> root, LinkedList<Node<T>> path,
+			List<List<Node<T>>> paths) {
+		count++;
+		path.add(root);
+		if (root.isLeaf()) {
+			paths.add(path);
+		} else {
+			for (Node<T> node : root.getChildren()) {
+				traverse(node, new LinkedList<Node<T>>(path), paths);
+			}
 		}
+	}
 }
