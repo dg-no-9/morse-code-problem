@@ -62,7 +62,7 @@ public class Finder {
 				if (readingEnded) {
 					break;
 				}
-
+			
 			}
 			matrix.add(possibleChars.toString());
 		}
@@ -73,11 +73,9 @@ public class Finder {
 			return;
 		}
 		String children = matrix.get(currentNode.getNodeWeight());
-		int intValue = 1;
 		for (char c : children.toCharArray()) {
 			Node<Character> newNode = new Node<Character>(c);
-			newNode.setNodeWeight(currentNode.getNodeWeight() + intValue);
-			intValue++;
+			newNode.setNodeWeight(currentNode.getNodeWeight() + Alphabets.getWeight(c));
 			currentNode.addChild(newNode);
 			buildTree(newNode);
 		}

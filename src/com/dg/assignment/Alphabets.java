@@ -48,4 +48,9 @@ public class Alphabets {
 		M_CODE.put('0', "AAAAA");
 		
 	}
+	
+	public static int getWeight(char c){
+		return Alphabets.M_CODE.get(c).length();
+	}
+	
 }

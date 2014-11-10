@@ -30,14 +30,14 @@ public class Tree<T> {
 		return paths;
 	}
 
-	private void traverse(Node<T> root, LinkedList<Node<T>> path,
+	private void traverse(Node<T> node, LinkedList<Node<T>> path,
 			List<List<Node<T>>> paths) {
-		path.add(root);
-		if (root.isLeaf()) {
+		path.add(node);
+		if (node.isLeaf()) {
 			paths.add(path);
 		} else {
-			for (Node<T> node : root.getChildren()) {
-				traverse(node, new LinkedList<Node<T>>(path), paths);
+			for (Node<T> n : node.getChildren()) {
+				traverse(n, new LinkedList<Node<T>>(path), paths);
 			}
 		}
 	}
